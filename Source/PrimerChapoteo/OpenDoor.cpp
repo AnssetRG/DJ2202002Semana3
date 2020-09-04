@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "OpenDoor.h"
+#include "GameFramework\Actor.h"
 
 // Sets default values for this component's properties
 UOpenDoor::UOpenDoor()
@@ -13,22 +13,21 @@ UOpenDoor::UOpenDoor()
 	// ...
 }
 
-
 // Called when the game starts
 void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// ...
-	
+	//0° -> 90°
+	float TmpFloat = 90.0f;
+	FRotator CurrentRotation = GetOwner()->GetActorRotation();
+	CurrentRotation.Yaw = TmpFloat;
+	GetOwner()->SetActorRotation(CurrentRotation);
 }
 
-
 // Called every frame
-void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
 }
-
